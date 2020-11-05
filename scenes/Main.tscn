@@ -12,5 +12,7 @@ script = ExtResource( 3 )
 layer = 5
 
 [node name="MainMenu" parent="Menu" instance=ExtResource( 1 )]
+visible = false
 
 [node name="Game" parent="." instance=ExtResource( 2 )]
+[connection signal="new_game" from="Menu/MainMenu" to="." method="_on_MainMenu_new_game"]

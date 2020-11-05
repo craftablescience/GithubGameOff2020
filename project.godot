@@ -19,6 +19,7 @@ config/name="GithubGameOff2020"
 config/description="Made by Brendan, Sebastian, and Sean"
 run/main_scene="res://scenes/Main.tscn"
 boot_splash/image="res://images/logo/banner.png"
+boot_splash/fullsize=false
 boot_splash/bg_color=Color( 0.243137, 0.243137, 0.243137, 1 )
 config/icon="res://images/logo/icon.png"
 
