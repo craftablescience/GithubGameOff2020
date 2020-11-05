@@ -5,7 +5,7 @@ export(float) var SPEED: float
 
 
 func _process(delta: float) -> void:
-	self.move_and_slide(self.get_input() * SPEED)
+	self.move_and_slide(self.get_input() * SPEED * delta)
 
 
 # Returns the direction the player is trying to go.

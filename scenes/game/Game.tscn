@@ -38,4 +38,4 @@ cell_quadrant_size = 8
 format = 1
 
 [node name="Player" parent="Game/Root" instance=ExtResource( 1 )]
-position = Vector2( 944.504, 485.745 )
+position = Vector2( 960, 540 )
