@@ -64,7 +64,6 @@ margin_top = 221.0
 margin_right = 528.0
 margin_bottom = 426.0
 size_flags_vertical = 3
-disabled = true
 text = "Settings"
 
 [node name="Quit" type="Button" parent="VBoxContainer"]
@@ -87,6 +86,7 @@ __meta__ = {
 }
 
 [node name="PlayBox" type="Panel" parent="ContextPanel"]
+visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
 
@@ -109,9 +109,19 @@ size_flags_horizontal = 3
 text = "New Game"
 
 [node name="SettingsBox" type="Panel" parent="ContextPanel"]
-visible = false
 anchor_right = 1.0
 anchor_bottom = 1.0
+
+[node name="Fullscreen" type="CheckButton" parent="ContextPanel/SettingsBox"]
+anchor_left = 0.3
+anchor_top = 0.1
+anchor_right = 0.7
+anchor_bottom = 0.2
+text = "Fullscreen"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="QuitBox" type="Panel" parent="ContextPanel"]
 visible = false
@@ -147,4 +157,5 @@ __meta__ = {
 [connection signal="pressed" from="VBoxContainer/Quit" to="ContextPanel" method="_on_Quit_pressed"]
 [connection signal="new_game" from="ContextPanel" to="." method="_on_ContextPanel_new_game"]
 [connection signal="pressed" from="ContextPanel/PlayBox/NewGame" to="ContextPanel" method="_on_NewGame_pressed"]
+[connection signal="toggled" from="ContextPanel/SettingsBox/Fullscreen" to="." method="_on_Fullscreen_toggled"]
 [connection signal="pressed" from="ContextPanel/QuitBox/QuitForReal" to="ContextPanel" method="_on_QuitForReal_pressed"]
