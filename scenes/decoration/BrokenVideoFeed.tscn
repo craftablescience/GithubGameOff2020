@@ -1,12 +1,16 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://videos/static/static.ogv" type="VideoStream" id=1]
 [ext_resource path="res://images/decoration/brokenvideofeed_backdrop.png" type="Texture" id=2]
 [ext_resource path="res://scripts/decoration/BrokenVideoFeed.gd" type="Script" id=3]
+[ext_resource path="res://images/lights/point.png" type="Texture" id=4]
 
 [sub_resource type="StyleBoxTexture" id=1]
 texture = ExtResource( 2 )
 region_rect = Rect2( 0, 0, 64, 36 )
+
+[sub_resource type="CanvasItemMaterial" id=2]
+light_mode = 1
 
 [node name="BrokenVideoFeed" type="Node2D"]
 script = ExtResource( 3 )
@@ -22,6 +26,7 @@ __meta__ = {
 }
 
 [node name="VideoPlayer" type="VideoPlayer" parent="Panel"]
+material = SubResource( 2 )
 anchor_left = 0.046875
 anchor_top = 0.0833333
 anchor_right = 0.953125
@@ -31,4 +36,16 @@ autoplay = true
 __meta__ = {
 "_edit_use_anchors_": true
 }
+
+[node name="Light2D" type="Light2D" parent="."]
+texture = ExtResource( 4 )
+texture_scale = 3.0
+color = Color( 0.545098, 0.733333, 1, 1 )
+range_layer_min = -5
+range_layer_max = 1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+
+[node name="Tween" type="Tween" parent="."]
 [connection signal="finished" from="Panel/VideoPlayer" to="." method="_on_VideoPlayer_finished"]
+[connection signal="tween_all_completed" from="Tween" to="." method="_on_Tween_tween_all_completed"]

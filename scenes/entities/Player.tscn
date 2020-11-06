@@ -1,15 +1,18 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://images/entities/player/idle.png" type="Texture" id=1]
 [ext_resource path="res://scripts/entities/Player.gd" type="Script" id=2]
+[ext_resource path="res://images/entities/player/lightmask.png" type="Texture" id=3]
+[ext_resource path="res://images/entities/player/halo.png" type="Texture" id=4]
 
 [sub_resource type="CapsuleShape2D" id=1]
 radius = 30.0
-height = 68.0
+height = 72.4452
 
 [node name="Player" type="KinematicBody2D"]
 script = ExtResource( 2 )
-SPEED = 13200.0
+SPEED = 300.0
+SPRINT_SPEED = 200.0
 
 [node name="Sprite" type="Sprite" parent="."]
 scale = Vector2( 4, 4 )
@@ -17,4 +20,25 @@ texture = ExtResource( 1 )
 offset = Vector2( 0.5, 0 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1.40308, -2.80615 )
 shape = SubResource( 1 )
+
+[node name="VisionOccluderSource" type="Light2D" parent="."]
+texture = ExtResource( 3 )
+texture_scale = 32.0
+color = Color( 1, 1, 1, 0.392157 )
+energy = 0.5
+range_layer_min = -5
+range_layer_max = 1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )
+
+[node name="Halo" type="Light2D" parent="."]
+position = Vector2( -8, -40 )
+texture = ExtResource( 4 )
+texture_scale = 16.0
+energy = 0.6
+range_layer_min = -5
+range_layer_max = 1
+shadow_enabled = true
+shadow_color = Color( 0, 0, 0, 1 )

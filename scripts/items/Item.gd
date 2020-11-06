@@ -6,7 +6,7 @@ var TYPE: int
 
 
 func _ready() -> void:
-	TYPE = TYPES.EMPTY
+	TYPE = Globals.TYPES.EMPTY
 
 func get_type() -> int:
 	return TYPE

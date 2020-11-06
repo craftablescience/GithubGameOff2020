@@ -3,5 +3,19 @@
 [sub_resource type="ProceduralSky" id=1]
 
 [resource]
-background_mode = 2
+background_mode = 4
 background_sky = SubResource( 1 )
+ambient_light_energy = 0.1
+glow_levels/1 = true
+glow_levels/3 = false
+glow_levels/5 = false
+glow_intensity = 8.0
+glow_strength = 2.0
+glow_bloom = 1.0
+glow_hdr_threshold = 0.0
+glow_hdr_luminance_cap = 256.0
+glow_hdr_scale = 4.0
+glow_bicubic_upscale = true
+adjustment_brightness = 1.57
+adjustment_contrast = 0.51
+adjustment_saturation = 8.0

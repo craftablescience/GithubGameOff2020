@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://images/debug/placeholder_grey_center.png" type="Texture" id=1]
 [ext_resource path="res://images/debug/placeholder_white_center.png" type="Texture" id=2]
@@ -6,8 +6,37 @@
 [ext_resource path="res://images/debug/placeholder_orange_center.png" type="Texture" id=4]
 [ext_resource path="res://images/debug/placeholder_orange.png" type="Texture" id=5]
 [ext_resource path="res://images/debug/placeholder_grey.png" type="Texture" id=6]
+[ext_resource path="res://images/environment/tiled_floor.png" type="Texture" id=7]
+[ext_resource path="res://images/environment/moon_surface.png" type="Texture" id=8]
+[ext_resource path="res://images/environment/wall_panel.png" type="Texture" id=9]
+[ext_resource path="res://images/environment/padded_floor.png" type="Texture" id=10]
+[ext_resource path="res://images/environment/wall_panel_corner_inverse.png" type="Texture" id=11]
+[ext_resource path="res://images/environment/wall_panel_external.png" type="Texture" id=12]
+[ext_resource path="res://images/environment/wall_panel_external_bottom.png" type="Texture" id=13]
+[ext_resource path="res://images/environment/wall_panel_border.png" type="Texture" id=14]
+[ext_resource path="res://images/environment/wall_panel_external_left.png" type="Texture" id=15]
+[ext_resource path="res://images/environment/wall_panel_external_right.png" type="Texture" id=16]
+[ext_resource path="res://images/environment/wall_panel_corner.png" type="Texture" id=17]
+[ext_resource path="res://images/environment/wall_panel_external_corner_left.png" type="Texture" id=18]
+[ext_resource path="res://images/environment/wall_panel_external_corner_right.png" type="Texture" id=19]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 16, 2 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 16, 8 )
+
+[sub_resource type="OccluderPolygon2D" id=3]
+polygon = PoolVector2Array( 0, 0, 16, 0, 16, 16, -16, 16, -16, 0 )
+
+[sub_resource type="OccluderPolygon2D" id=5]
+polygon = PoolVector2Array( -16, 0, 0, 0, 0, 16, -16, 16 )
+
+[sub_resource type="OccluderPolygon2D" id=4]
+polygon = PoolVector2Array( 0, -16, 16, -16, 16, 16, -16, 16, -16, 0, 0, 0 )
 
 [node name="Environment" type="Node2D"]
+position = Vector2( 16, 16 )
 
 [node name="Placeholder_Grey" type="Sprite" parent="."]
 texture = ExtResource( 6 )
@@ -31,3 +60,84 @@ texture = ExtResource( 2 )
 [node name="Placeholder_Orange_Center" type="Sprite" parent="."]
 position = Vector2( 64, 32 )
 texture = ExtResource( 4 )
+
+[node name="TiledFloor" type="Sprite" parent="."]
+position = Vector2( 96, 0 )
+texture = ExtResource( 7 )
+
+[node name="MoonSurface" type="Sprite" parent="."]
+position = Vector2( 128, 0 )
+texture = ExtResource( 8 )
+
+[node name="PaddedFloor" type="Sprite" parent="."]
+position = Vector2( 160, 0 )
+texture = ExtResource( 10 )
+
+[node name="WallPanel" type="Sprite" parent="."]
+position = Vector2( 32, 96 )
+texture = ExtResource( 9 )
+
+[node name="WallPanelCollider" type="Sprite" parent="."]
+position = Vector2( 64, 96 )
+texture = ExtResource( 9 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WallPanelCollider"]
+position = Vector2( 0, -14 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallPanelCollider/StaticBody2D"]
+shape = SubResource( 1 )
+
+[node name="WallPanelBorder" type="Sprite" parent="."]
+position = Vector2( 32, 64 )
+texture = ExtResource( 14 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="WallPanelBorder"]
+position = Vector2( 0, 8 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallPanelBorder/StaticBody2D"]
+shape = SubResource( 2 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="WallPanelBorder"]
+light_mask = 2
+occluder = SubResource( 3 )
+light_mask = 2
+
+[node name="WallPanelCorner" type="Sprite" parent="."]
+position = Vector2( 64, 64 )
+texture = ExtResource( 17 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="WallPanelCorner"]
+occluder = SubResource( 5 )
+
+[node name="WallPanelCornerInverse" type="Sprite" parent="."]
+position = Vector2( 0, 64 )
+texture = ExtResource( 11 )
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="WallPanelCornerInverse"]
+light_mask = 2
+occluder = SubResource( 4 )
+light_mask = 2
+
+[node name="WallPanelExternal" type="Sprite" parent="."]
+position = Vector2( 0, 96 )
+texture = ExtResource( 12 )
+
+[node name="WallPanelExternalBottom" type="Sprite" parent="."]
+position = Vector2( 0, 128 )
+texture = ExtResource( 13 )
+
+[node name="WallPanelExternalLeft" type="Sprite" parent="."]
+position = Vector2( 0, 144 )
+texture = ExtResource( 15 )
+
+[node name="WallPanelExternalRight" type="Sprite" parent="."]
+position = Vector2( 32, 144 )
+texture = ExtResource( 16 )
+
+[node name="WallPanelExternalCornerLeft" type="Sprite" parent="."]
+position = Vector2( 0, 176 )
+texture = ExtResource( 18 )
+
+[node name="WallPanelExternalCornerRight" type="Sprite" parent="."]
+position = Vector2( 32, 176 )
+texture = ExtResource( 19 )
