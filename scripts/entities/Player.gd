@@ -80,3 +80,23 @@ func update_input() -> void:
 		$Halo.rotation_degrees = 0
 	if Input.is_action_just_released("ui_right"):
 		self.right = false
+	
+	if !(self.up or self.down or self.left or self.right):
+		if Input.is_action_pressed("ui_left") and !Input.is_action_pressed("ui_right"):
+			self.left = true
+			if self.LOOKING != "left":
+				self.apply_scale(Vector2(-1, 1))
+				self.LOOKING = "left"
+			$Halo.rotation_degrees = 0
+		if Input.is_action_pressed("ui_right") and !Input.is_action_pressed("ui_left"):
+			self.right = true
+			if self.LOOKING != "right":
+				self.apply_scale(Vector2(-1, 1))
+				self.LOOKING = "right"
+			$Halo.rotation_degrees = 0
+		if Input.is_action_pressed("ui_up") and !Input.is_action_pressed("ui_down") and !left and !right:
+			self.up = true
+			$Halo.rotation_degrees = 270
+		if Input.is_action_pressed("ui_down") and !Input.is_action_pressed("ui_up") and !left and !right:
+			self.down = true
+			$Halo.rotation_degrees = 90
