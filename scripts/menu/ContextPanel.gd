@@ -9,13 +9,13 @@ func _ready() -> void:
 
 
 func _on_Play_pressed() -> void:
-	self.current_tab = 1
+	self.current_tab = 0
 
 func _on_Settings_pressed() -> void:
-	self.current_tab = 2
+	self.current_tab = 1
 
 func _on_Quit_pressed() -> void:
-	self.current_tab = 3
+	self.current_tab = 2
 
 func _on_QuitForReal_pressed() -> void:
 	get_tree().quit(0)

@@ -9,10 +9,17 @@ pause_mode = 2
 script = ExtResource( 3 )
 
 [node name="Menu" type="CanvasLayer" parent="."]
-layer = 5
+pause_mode = 2
+layer = 3
 
 [node name="MainMenu" parent="Menu" instance=ExtResource( 1 )]
-visible = false
 
-[node name="Game" parent="." instance=ExtResource( 2 )]
+[node name="HUD" type="CanvasLayer" parent="."]
+pause_mode = 1
+layer = 2
+
+[node name="Game" type="CanvasLayer" parent="."]
+pause_mode = 1
+
+[node name="Game" parent="Game" instance=ExtResource( 2 )]
 [connection signal="new_game" from="Menu/MainMenu" to="." method="_on_MainMenu_new_game"]
