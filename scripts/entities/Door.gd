@@ -16,8 +16,10 @@ func _process(_delta: float) -> void:
 	if self.INPUT_READY and Input.is_action_just_pressed("ui_select"):
 		if self.OPEN:
 			$Door.play("closing")
+			$LightOccluder2D.show()
 		else:
 			$Door.play("opening")
+			$LightOccluder2D.hide()
 
 
 func _on_Door_animation_finished() -> void:
