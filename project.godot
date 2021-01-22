@@ -9,12 +9,18 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Item",
+"class": "Gun",
+"language": "GDScript",
+"path": "res://scripts/entities/gun/Gun.gd"
+}, {
 "base": "Node2D",
 "class": "Item",
 "language": "GDScript",
-"path": "res://scripts/items/Item.gd"
+"path": "res://scripts/entities/Item.gd"
 } ]
 _global_script_class_icons={
+"Gun": "res://images/entities/pistol/pistol.png",
 "Item": "res://images/editor/Item.png"
 }
 

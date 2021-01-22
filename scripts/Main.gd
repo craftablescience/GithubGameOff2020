@@ -19,7 +19,11 @@ func _process(_delta: float) -> void:
 		MainMenu.show()
 		get_tree().paused = true
 
+
 func _on_MainMenu_new_game() -> void:
 	MainMenu.hide()
 	$PlayerCamera.current = true
 	get_tree().paused = false
+
+func _on_BackgroundMusic_finished() -> void:
+	$BackgroundMusic.play()
